@@ -128,7 +128,7 @@ Amenities:
 - Represents features that can be associated with places.
 - Can be linked to multiple places.
 
-Relationships between each entity:
+**Relationships between each entity:**
 
 User & Place:
 - One to many relationships exist between User and Place, where one user can own multiple places, but a place only belongs to one user.
