@@ -38,3 +38,68 @@ Persistence Layer:
 Facade Pattern:
 - Alot of small highly focused code (def for each single task) vs one class doing everything
   
+```mermaid
+classDiagram
+
+class User {
+    +UUID id
+    +String first_name
+    +String last_name
+    +String email
+    +String password
+    +Boolean is_admin
+    +DateTime created_at
+    +DateTime updated_at
+    +register()
+    +update_profile()
+    +delete()
+}
+
+class Place {
+    +UUID id
+    +String title
+    +String description
+    +Float price
+    +Float latitude
+    +Float longitude
+    +DateTime created_at
+    +DateTime updated_at
+    +create()
+    +update()
+    +delete()
+    +list()
+    +add_amenity()
+    +remove_amenity()
+}
+
+class Review {
+    +UUID id
+    +Integer rating
+    +String comment
+    +DateTime created_at
+    +DateTime updated_at
+    +create()
+    +update()
+    +delete()
+    +list_by_place()
+}
+
+class Amenity {
+    +UUID id
+    +String name
+    +String description
+    +DateTime created_at
+    +DateTime updated_at
+    +create()
+    +update()
+    +delete()
+    +list()
+}
+
+User "1" --> "0..*" Place : owns
+User "1" --> "0..*" Review : writes
+Place "1" --> "0..*" Review : receives
+Place "0..*" --> "0..*" Amenity : has
+Review "1" --> "1" User : author
+Review "1" --> "1" Place : for
+```
