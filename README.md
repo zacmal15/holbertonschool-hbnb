@@ -19,11 +19,12 @@ It's good to have you with us, even if its just for a day.
      - Place Creation
      - Review Submission
      - Fetching a list of places
-2.
+
+2. Coming soon
 
 ---
 
-## Authors
+## Authors
 **"4 in a bed at the HBnB"**:
 - Anthony Joy
 - Zac Malkoun
