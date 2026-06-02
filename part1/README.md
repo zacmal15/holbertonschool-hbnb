@@ -146,6 +146,26 @@ Each entity of the Business Layer also have a UUID4 identifier to make sure each
 
 Overall, these 4 entities collectively makeup the Business Layer of the HBnB application, which also defines how each of these entities interacts within the system.
 
+USER CREATION:  
+```mermaid
+sequenceDiagram
+actor User
+participant API
+participant Facade
+participant BusinessLogic
+participant Database
+User->>API: Register for service
+API->>Facade: register user(user data)
+Facade->>BusinessLogic: Validate user data(user data)
+BusinessLogic->>Database: does email exist?
+Database-->>BusinessLogic: email exists
+BusinessLogic->>Database: save user data (user data)
+Database-->>BusinessLogic: Save user
+BusinessLogic-->>Facade: user registered
+Facade-->>API: User created response
+API-->>User: Welcome! Here are your details
+```
+
 PLACE CREATION:
 ```mermaid
 sequenceDiagram
