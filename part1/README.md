@@ -19,25 +19,25 @@ BusinessLogicLayer --> PersistenceLayer : Database Operations
 ```
 
 ---
-*** Presentation Layer:
+### Presentation Layer:
 - top layer, contains the API
 - only interaction the user has is through this
 - sends request to BL and returns failure or success e.g. user clicks edit property, sends request to BL and gets returned sucess or failure
 - only talks to the BL, doesnt know of persistence layers existence 
 
-*** Business Logic Layer: 
+### Business Logic Layer: 
 - Holds main Entities
 - Holds all the logic and connections between each entity. e.g. only X user edit thise property
 - talks to both layers, though only sends requests to persistence if passes logic
 
-*** Persistence Layer: 
+### Persistence Layer: 
 - handles the connection to database
 - deals with all the read and write for the database e.g. changing the values of said property owner wants
 - doesnt know of any logic above only does the task given
 
 ---
 
-*** Facade Pattern:
+### Facade Pattern:
 - Alot of small highly focused code (def for each single task) vs one class doing everything
   
 ```mermaid
@@ -109,39 +109,39 @@ Review "1" --> "1" Place : for
 ```
 This class diagram shows the Business layer of the HBnB application. It displays the core components of the Business Layer, including User, Place, Review, and Amenities, along with each of their own attributes, methods and relationships respectively.
 
-*** User:
+### User:
 - Represents users of the HBnB application.
 - Each user contains personal info such as their first and last name, email and password. 
 - The is_admin attribute identifies administrative users.
 - This class also includes methods for registration, profile updates, and deletion.
 
-*** Place:
+### Place:
 - Represents properties listed by users.
 - Each property includes info such as title, description, price, latitude and longitude.
 - A place belongs to a single user and can contain multiple amenities.
 - Methods are included for creating, updating, deleting, and listing places.
 
-*** Review:
+### Review:
 - Represents feedback left by users on places they have stayed at.
 - Contains ratings and comments left by customers.
 - Each review is associated to one user and one place.
 
-*** Amenities:
+### Amenities:
 - Represents features that can be associated with places.
 - Can be linked to multiple places.
 
-** Relationships between each entity:
+## Relationships between each entity:
 
-*** User & Place:
+### User & Place:
 - One to many relationships exist between User and Place, where one user can own multiple places, but a place only belongs to one user.
 
-*** User & Review:
+### User & Review:
 - One to many relationships exist between User and Review. Users can write multiple reviews.
 
-*** Place & Review:
+### Place & Review:
 - One to many relationships exist between Place and Reviews. A place can receive multiple reviews.
 
-*** Place & Amenity:
+### Place & Amenity:
 - Many to many relationships can exist between Place and Amenity. Places can contain multiple amenities, and amenities can also exist between multiple places. Example: Wifi and a Shower can exist at multiple listed places.
 
 Each entity of the Business Layer also have a UUID4 identifier to make sure each attribute/class have uniqueness to them. Attributes such as created_at and updated_at are included to track object creation and modification times.
@@ -150,7 +150,7 @@ Overall, these 4 entities collectively makeup the Business Layer of the HBnB app
 
 ---
 
-** USER CREATION:  
+## USER CREATION:  
 ```mermaid
 sequenceDiagram
 actor User
@@ -171,7 +171,7 @@ API-->>User: Welcome! Here are your details
 ```
 
 
-** PLACE CREATION:
+## PLACE CREATION:
 ```mermaid
 sequenceDiagram
 actor User
