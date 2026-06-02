@@ -182,6 +182,7 @@ participant Database
 User->>API: Place Creation (User , Place Data)
 API->>Database: verify_data(User, Place Data)
 Database-->>API: user_verified
+Database-->>API: place_verified
 API->>BusinessLogic: create_place(Place Data)
 BusinessLogic->>Database: Save_place(Place Data)
 Database-->>BusinessLogic: Confirm Save
