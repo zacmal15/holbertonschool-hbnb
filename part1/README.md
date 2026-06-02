@@ -155,8 +155,8 @@ Each entity of the Business Layer also have a UUID4 identifier to make sure each
 Overall, these 4 entities collectively makeup the Business Layer of the HBnB application, which also defines how each of these entities interacts within the system.
 
 ---
-# Squence diagrams for API calls
-Here we have squence diagrams for 4 different API calls showing how the Presentation layer (API and facade), Business logic layer and the persistence layer (database) communicate with each other
+# Sequence diagrams for API calls
+Here we have sequence diagrams for 4 different API calls showing how the Presentation layer (API and facade), Business logic layer and the persistence layer (database) communicate with each other
 
 These are:
 - User Registration
