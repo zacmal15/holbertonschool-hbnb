@@ -189,3 +189,21 @@ Database-->>BusinessLogic: Confirm Save
 BusinessLogic-->>API: Return Place
 API-->>User: Place created
 ```
+
+## FETCHING A LIST OF PLACES
+```mermaid
+sequenceDiagram
+actor User
+participant API
+participant Facade
+participant BusinessLogic
+participant Database
+User->>API: Enter criteria for place
+API->>Facade: get places(filters)
+Facade->>BusinessLogic: fetch placess(filters)
+BusinessLogic->>Database: retrieve matches
+Database-->>BusinessLogic: list of places
+BusinessLogic-->>Facade: return list of matching places
+Facade-->>API: places response
+API-->>User: Display list of places
+```
