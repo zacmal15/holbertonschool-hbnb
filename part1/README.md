@@ -149,7 +149,7 @@ Overall, these 4 entities collectively makeup the Business Layer of the HBnB app
 PLACE CREATION:
 ```mermaid
 sequenceDiagram
-participant User
+actor User
 participant API
 participant BusinessLogic
 participant Database
