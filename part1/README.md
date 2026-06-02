@@ -145,3 +145,21 @@ Place & Amenity:
 Each entity of the Business Layer also have a UUID4 identifier to make sure each attribute/class have uniqueness to them. Attributes such as created_at and updated_at are included to track object creation and modification times.
 
 Overall, these 4 entities collectively makeup the Business Layer of the HBnB application, which also defines how each of these entities interacts within the system.
+
+PLACE CREATION:
+```mermaid
+sequenceDiagram
+participant User
+participant API
+participant BusinessLogic
+participant Database
+
+User->>API: Place Creation (User , Place Data)
+API->>Database: verify_data(User, Place Data)
+Database-->>API: user_verified
+API->>BusinessLogic: create_place(Place Data)
+BusinessLogic->>Database: Save_place(Place Data)
+Database-->>BusinessLogic: Confirm Save
+BusinessLogic-->>API: Return Place
+API-->>User: Place created
+```
