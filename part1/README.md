@@ -187,8 +187,8 @@ participant Database
 User->>API: Create Review 
 API->>Facade: Create_review(Review Data)
 Facade->>BusinessLogic: Validate_place(place)
-BusinessLogic->>Database: Find place, is it there place?
-Database-->>BusinessLogic: Place exists and isnt theres
+BusinessLogic->>Database: Find place, is it their place?
+Database-->>BusinessLogic: Place exists and isnt theirs
 BusinessLogic-->>Facade: User can review place
 Facade->>Database: User review for place
 Database-->>Facade: User review completed
