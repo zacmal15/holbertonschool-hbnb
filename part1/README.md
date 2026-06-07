@@ -154,7 +154,7 @@ BusinessLogic-->>Facade: user registered
 Facade-->>API: User created response
 API-->>User: Welcome! Here are your details
 ```
-
+Creation of a new user, The API recevies the registration request and passes that onto the facade. This sends it towards the Business Logic Layer for validation, its will check if the email is unique and doesnt exist with the database if so a user will be created. If email isnt unique will request a new email for the user.
 
 ## PLACE CREATION:
 ```mermaid
@@ -174,6 +174,7 @@ BusinessLogic-->>Facade: place registered
 Facade-->>API: Return Place response
 API-->>User: Place created
 ```
+Creation of a new place, This follow the same pattern of user creation, the user makes a registration request and passes that onto the facade. This sends it towards the Business Logic Layer to verify the user identity and place data. This is then sent to the database and in return a listing is created.
 
 ## USER REVIEW
 ```mermaid
@@ -195,6 +196,7 @@ Database-->>Facade: User review completed
 Facade-->>API: User review respone 
 API-->>User: Review Placed
 ```
+Creation of a review, the user creates a review and the API recevies a review request. It is then checked through the Business Logic Layer if its the own place, if it isnt the user can review and a review is made directly from the Facade. Otherwise it wont accept a review from user.  
 
 ## FETCHING A LIST OF PLACES
 ```mermaid
@@ -213,4 +215,4 @@ BusinessLogic-->>Facade: return list of matching places
 Facade-->>API: places response
 API-->>User: Display list of places
 ```
-
+Fetching a list of places, this is just a filter, no checks required . It sends a request of places, through the Business Logic layer into the database. Which returns matching places back for it to be displayed for the user.
