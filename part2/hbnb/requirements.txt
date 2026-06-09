@@ -1,1 +1,2 @@
-REQUIREMENTS
+flask
+flask-restx
