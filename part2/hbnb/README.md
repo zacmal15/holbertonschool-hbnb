@@ -4,7 +4,7 @@
 
 The Business Logic Layer contains the core entities of the HBnB application and implements the business rules of the application. This layer is responsible for managing the four models: Users, Places, Reviews, and Amenities, while also maintaining the relationship between them.
 
-All models inherit from the 'BaseModel' class, which provides all common attributes between the models such as uuid, and time stamps.
+All models inherit from the `BaseModel` class, which provides all common attributes between the models such as uuid, and time stamps.
 
 ## BaseModel
 
