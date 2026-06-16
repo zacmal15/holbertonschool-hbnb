@@ -24,6 +24,12 @@ class HBnBFacade:
     
     def get_user_list(self):
         return self.user_repo.get_all()
+    
+    def update_user(self, user_id, data):
+        user = self.user_repo.get(user_id)
+        user.update(data)
+        return user
+
 
     # Placeholder method for fetching a place by ID
     def get_place(self, place_id):

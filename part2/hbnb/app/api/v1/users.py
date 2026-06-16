@@ -29,7 +29,7 @@ class UserList(Resource):
 
         new_user = facade.create_user(user_data)
         return {'id': new_user.id, 'first_name': new_user.first_name, 'last_name': new_user.last_name, 'email': new_user.email}, 201
-    
+    @api.response(200, 'User List created')
     def get(self):
        "Get all users"
        users = facade.get_user_list()
@@ -42,6 +42,16 @@ class UserResource(Resource):
     def get(self, user_id):
         """Get user details by ID"""
         user = facade.get_user(user_id)
+        if not user:
+            return {'error': 'User not found'}, 404
+        return {'id': user.id, 'first_name': user.first_name, 'last_name': user.last_name, 'email': user.email}, 200
+    
+    @api.response(200, 'User successfully updated')
+    @api.response(404, 'User does not exist')
+    @api.response(400, 'Invalid input data')
+    def put(self, user_id):
+        "Update user inFo"
+        user = facade.update_user(user_id, api.payload)
         if not user:
             return {'error': 'User not found'}, 404
         return {'id': user.id, 'first_name': user.first_name, 'last_name': user.last_name, 'email': user.email}, 200
