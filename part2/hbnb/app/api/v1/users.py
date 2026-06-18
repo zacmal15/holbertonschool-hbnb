@@ -30,21 +30,14 @@ class UserList(Resource):
         new_user = facade.create_user(user_data)
         if new_user is None:
             return {'error': 'Email already in use'}, 400
-
         return new_user, 201
-
-#        # Simulate email uniqueness check (to be replaced by real validation with persistence)
-#        existing_user = facade.get_user_by_email(user_data['email'])
-#        if existing_user:
-#            return {'error': 'Email already registered'}, 400
-#        new_user = facade.create_user(user_data)
-#        return {'id': new_user.id, 'first_name': new_user.first_name, 'last_name': new_user.last_name, 'email': new_user.email}, 201
-    
+ 
     @api.response(200, 'User List created')
+    @api.marshal_list_with(user_lamb)
     def get(self):
        "Get all users"
        users = facade.get_user_list()
-       return [{'id': u.id, 'first_name': u.first_name, 'last_name': u.last_name, 'email': u.email} for u in users] , 200
+       return users
 
 @api.route('/<user_id>')
 class UserResource(Resource):
@@ -56,13 +49,15 @@ class UserResource(Resource):
         if not user:
             return {'error': 'User not found'}, 404
         return {'id': user.id, 'first_name': user.first_name, 'last_name': user.last_name, 'email': user.email}, 200
-    
+
+    @api.expect(user_model, validate=True)
     @api.response(200, 'User successfully updated')
     @api.response(404, 'User does not exist')
     @api.response(400, 'Invalid input data')
+    @api.marshal_with(user_lamb)
     def put(self, user_id):
         "Update user inFo"
         user = facade.update_user(user_id, api.payload)
         if not user:
             return {'error': 'User not found'}, 404
-        return {'id': user.id, 'first_name': user.first_name, 'last_name': user.last_name, 'email': user.email}, 200
+        return user, 200
