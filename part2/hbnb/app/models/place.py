@@ -8,7 +8,7 @@ from app.models.user import User
 class Place(BaseModel):
     """Place class for property listings."""
 
-    def __init__(self, title, description, price, latitude, longitude, owner):
+    def __init__(self, title, description, price, latitude, longitude, owner_id, amenities):
         super().__init__()
 
         if not title or len(title) > 100:
@@ -23,19 +23,19 @@ class Place(BaseModel):
         if longitude < -180.0 or longitude > 180.0:
             raise ValueError("Longitude must be between -180.0 and 180.0")
             
-        if not isinstance(owner, User):
-            raise ValueError("Owner must be a User instance")
+#        if not isinstance(owner_id, User):
+#            raise ValueError("Owner must be a User instance")
 
         self.title = title
         self.description = description
         self.price = float(price)
         self.latitude = float(latitude)
         self.longitude = float(longitude)
-        self.owner = owner
+        self.owner_id = owner_id
         self.reviews = []
         self.amenities = []
 
-        owner.places.append(self)
+        owner_id.places.append(self)
 
     def add_review(self, review):
         """Add a review to the place."""

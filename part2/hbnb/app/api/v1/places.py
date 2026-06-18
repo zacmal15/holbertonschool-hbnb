@@ -43,6 +43,7 @@ place_lamb2 = api.model('Place Marhsal', {
     'latitude': fields.Float,
     'longitude': fields.Float,
     'owner_id': fields.String,
+    'amenities': fields.List(fields.String),
 })
 
 
