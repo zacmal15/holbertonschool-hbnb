@@ -29,13 +29,24 @@ place_model = api.model('Place', {
     'amenities': fields.List(fields.String, required=True, description="List of amenities ID's")
 })
 
-place_lamb1 = api.model('Place Marhsal', {
+place_model_lamb = api.model("Place ID", {
+    'id': fields.String,
+    'title': fields.String,
+    'description': fields.String,
+    'latitude': fields.Float,
+    'longitude': fields.Float,
+    'owner': fields.Nested(user_model),
+    'amenities': fields.List(fields.Nested(amenity_model)),
+})
+
+
+place_lamb1 = api.model('Place Marhsal 1', {
     'id': fields.String,
     'title': fields.String,
     'latitude': fields.Float,
     'longitude': fields.Float,
 })
-place_lamb2 = api.model('Place Marhsal', {
+place_lamb2 = api.model('Place Marhsal 2', {
     'id': fields.String,
     'title': fields.String,
     'description': fields.String,
@@ -43,6 +54,11 @@ place_lamb2 = api.model('Place Marhsal', {
     'latitude': fields.Float,
     'longitude': fields.Float,
     'owner_id': fields.String,
+})
+place_lamb3 = api.model('Place Marshal 3', {
+    'title': fields.String,
+    'description': fields.String,
+    'price': fields.Float,
 })
 
 
@@ -66,3 +82,28 @@ class PlaceList(Resource):
         """Retrieve a list of all places"""
         places = facade.get_all_places()
         return places
+
+
+@api.route('/<place_id>')
+class PlaceResource(Resource):
+    @api.response(200, 'Place details retrieved successfully')
+    @api.response(404, 'Place not found')
+    @api.marshal_with(place_model_lamb)
+    def get(self, place_id):
+        """Get place details by ID"""
+        place = facade.get_place(place_id)
+        if not place:
+            return {'error': 'Place not found'}, 404
+        return place, 200
+
+    @api.expect(place_model)
+    @api.response(200, 'Place updated successfully')
+    @api.response(404, 'Place not found')
+    @api.response(400, 'Invalid input data')
+    @api.marshal_with(place_lamb3)
+    def put(self, place_id):
+        """Update a place's information"""
+        place = facade.update_user(place_id, api.payload)
+        if not place:
+            return {'error': 'Place not found'}, 404
+        return {"message": "Place updated successfully"}, 200
