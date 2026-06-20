@@ -143,4 +143,11 @@ class HBnBFacade:
 
     def delete_review(self, review_id):
         review = self.review_repo.get(review_id)
-        pass
+        if review:
+            if review in review
+        if review in review.places.reviews:
+            review.place.reviews.remove(review)
+        if review in review.user.reviews:
+            review.user.reviews.remove(review)
+        self.review_repo.delete(review_id)
+        return review
