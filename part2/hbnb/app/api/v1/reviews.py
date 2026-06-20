@@ -12,7 +12,7 @@ review_model = api.model('Review', {
     'place_id': fields.String(required=True, description='ID of the place')
 })
 
-review_lamb = api.model('Review Marshal', {
+review_lamb1 = api.model('Review Marshal 1', {
     'id': fields.String,
     'text': fields.String,
     'rating': fields.Integer,
@@ -20,13 +20,18 @@ review_lamb = api.model('Review Marshal', {
     'place_id': fields.String(attribute='place.id')
 })
 
+review_lamb2 = api.model('Review Marshal 1', {
+    'id': fields.String,
+    'text': fields.String,
+    'rating': fields.Integer,
+})
 
 @api.route('/')
 class ReviewList(Resource):
     @api.expect(review_model, validate=True)
     @api.response(201, 'Review successfully created')
     @api.response(400, 'Invalid input data')
-    @api.marshal_with(review_lamb)
+    @api.marshal_with(review_lamb1)
     def post(self):
         """Register a new review"""
         review_data = api.payload
@@ -36,3 +41,40 @@ class ReviewList(Resource):
             api.abort(400, 'Invalid input data')
 
         return new_review, 201
+
+    @api.response(200, 'List of reviews retrieved successfully')
+    @api.marshal_list_with(review_lamb2)
+    def get(self):
+        reviews = facade.get_all_reviews()
+        return reviews
+
+
+@api.route('/<review_id>')
+class ReviewResource(Resource):
+    @api.response(200, 'Review details retrieved successfully')
+    @api.response(404, 'Review not found')
+    @api.marshal_with(review_lamb1)
+    def get(self, review_id):
+        """Get review details by ID"""
+        review = facade.get_review(review_id)
+        if not review:
+            return {'error': 'Review not found'}, 404
+        return review, 200
+
+    @api.expect(review_model)
+    @api.response(200, 'Review updated successfully')
+    @api.response(404, 'Review not found')
+    @api.response(400, 'Invalid input data')
+    def put(self, review_id):
+        """Update a review's information"""
+        review = facade.update_review(review_id, api.payload)
+        if not review:
+            return {'error': 'Review not found'}, 404
+        return {"message": "Place updated successfully"}, 200
+
+    @api.response(200, 'Review deleted successfully')
+    @api.response(404, 'Review not found')
+    def delete(self, review_id):
+        """Delete a review"""
+        # Placeholder for the logic to delete a review
+        pass
