@@ -115,14 +115,32 @@ class HBnBFacade:
             return None
 
         try:
-            review = Review(
-                text=review_data['text'],
-                rating=int(review_data['rating']),
-                user=user,
-                place=place
-            )
+            review = Review(**review_data)
         except (ValueError, TypeError):
             return None
 
         self.review_repo.add(review)
         return review
+
+    def get_review(self, review_id):
+        return self.review_repo.get(review_id)
+
+    def get_all_reviews(self):
+        return self.review_repo.get()
+
+    def get_reviews_by_place(self, place_id):
+        place = self.place_repo.get(place_id)
+        if not place:
+            return None
+        return place.reviews
+
+    def update_review(self, review_id, review_data):
+        review = self.review_repo.get(review_id)
+        if not review:
+            return None
+        review.update(review_data)
+        return review
+
+    def delete_review(self, review_id):
+        review = self.review_repo.get(review_id)
+        pass
