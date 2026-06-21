@@ -1,4 +1,4 @@
-# Business Logic Layer
+<img width="558" height="792" alt="image" src="https://github.com/user-attachments/assets/63753517-24ac-4f2a-89af-95b64744a917" /># Business Logic Layer
 
 ## Overview
 
@@ -158,3 +158,36 @@ place.add.amenity(wifi)
 user.update({
     "first_name": "Samuel"
 })This is the readme for the hbnh project part 2
+
+
+---
+
+### Setup and running
+1. git clone https://github.com/SamAT01ni/holbertonschool-hbnb/
+2. cd part2/hbnb/
+3. pip install -r requirements.txt
+4. python3 run.py
+
+Doing these four steps setup and run the api services, once this is setup you have multiple options to run and use the services.
+such as through the swagger using http://127.0.0.1:5000/api/v1/ or curl/postman etc..
+
+Example curl commands:
+curl -X 'POST' \
+  'http://127.0.0.1:5000/api/v1/users/' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "john.doe@example.com"
+}'
+Expected output:
+{
+  "id": "ba3e4f2d-2e71-41d4-8bf0-389b8afa26f0",
+  "first_name": "John",
+  "last_name": "Doe",
+  "email": "john.doe@example.com"
+}
+
+Here you have created the user John Doe, with the email john.doe@example.com
+
