@@ -78,9 +78,12 @@ class PlaceList(Resource):
     def post(self):
         """Register a new place"""
         place_data = api.payload
-        new_place = facade.create_place(place_data)
+        try:
+            new_place = facade.create_place(place_data)
+        except ValueError as e:
+            api.abort(400, str(e))
         if not new_place:
-            return {'error': 'Owner or amenity not found'}, 400
+            api.abort(400, 'Owner or amenity not found')
         return new_place, 201
 
     @api.response(200, 'List of places retrieved successfully')
@@ -100,7 +103,7 @@ class PlaceResource(Resource):
         """Get place details by ID"""
         place = facade.get_place(place_id)
         if not place:
-            return {'error': 'Place not found'}, 404
+            api.abort(404, 'Place not found')
         return place, 200
 
     @api.expect(place_lamb3)

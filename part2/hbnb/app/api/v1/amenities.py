@@ -25,7 +25,10 @@ class AmenityList(Resource):
     def post(self):
         """Register a new amenity"""
         amenity_data = api.payload
-        new_amenity = facade.create_amenity(amenity_data)
+        try:
+            new_amenity = facade.create_amenity(amenity_data)
+        except ValueError as e:
+            api.abort(400, str(e))
         return new_amenity, 201
 
     @api.response(200, 'List of amenities retrieved successfully')

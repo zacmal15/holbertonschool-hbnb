@@ -74,7 +74,7 @@ class HBnBFacade:
         place = Place(**place_data)
         place.owner = owner
         place.amenities = []
-        for amen in place_data['amenities_id']:
+        for amen in place_data.get('amenities_id', []):
             amenity = self.amenity_repo.get(amen)
             if not amenity:
                 return None
@@ -112,6 +112,8 @@ class HBnBFacade:
         place = self.get_place(review_data['place_id'])
 
         if not user or not place:
+            return None
+        if place.owner_id == user.id:
             return None
 
         try:
