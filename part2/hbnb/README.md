@@ -158,3 +158,35 @@ place.add.amenity(wifi)
 user.update({
     "first_name": "Samuel"
 })
+
+---
+
+# Setup and running HBnB
+
+## Clone the repository
+```
+git clone https://github.com/SamAT01ni/holbertonschool-hbnb.git
+```
+## Navigate to hbnb
+```
+cd holbertonschool-hbnb/part2/hbnb
+```
+## Install the required parts
+```
+pip install -r requirements.txt
+```
+## Run the application
+```
+python3 run.py
+```
+This starts the api server and it can be accessed on your browser through:\
+http://127.0.0.1:5000/api/v1/
+
+You can then try to create users and places yourself using Swagger UI
+
+---
+
+# Using the API
+
+We recommend using swagger ui through the localhost because thats what we used so i cannot really guide you elsewhere\
+Going to show you a few examples of how to use the API anyway
