@@ -1,4 +1,4 @@
-<img width="558" height="792" alt="image" src="https://github.com/user-attachments/assets/63753517-24ac-4f2a-89af-95b64744a917" /># Business Logic Layer
+# Business Logic Layer
 
 ## Overview
 
@@ -172,6 +172,7 @@ Doing these four steps setup and run the api services, once this is setup you ha
 such as through the swagger using http://127.0.0.1:5000/api/v1/ or curl/postman etc..
 
 Example curl commands:
+```
 curl -X 'POST' \
   'http://127.0.0.1:5000/api/v1/users/' \
   -H 'accept: application/json' \
@@ -181,13 +182,15 @@ curl -X 'POST' \
     "last_name": "Doe",
     "email": "john.doe@example.com"
 }'
+```
 Expected output:
+```
 {
   "id": "ba3e4f2d-2e71-41d4-8bf0-389b8afa26f0",
   "first_name": "John",
   "last_name": "Doe",
   "email": "john.doe@example.com"
 }
-
+```
 Here you have created the user John Doe, with the email john.doe@example.com
 
