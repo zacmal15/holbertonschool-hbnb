@@ -219,3 +219,30 @@ Going to the places header and going into POST, you can create a Hbnb.
 Only thing to note here is that you need to enter a valid user_id so the place actually belongs to someone.
 
 Amenities are optional but if entered they must also match with an existing amenity id. Here is an example of the creation of Anfield
+![place making](images/placeenter.png)
+
+You have to enter valid data, valid user id and amenity ids and a non zero price, as well as having conditions around the latitude and longitude.
+
+After hitting execute you should see this if successful
+
+![place success](images/placemade.png)
+
+Bosh
+
+## Review making
+
+Each review has to be connected to a user and a place
+
+If the owner of the place tries to post a review it will not be made. no funny business here we are very serious.
+
+But this is an example of how to do it
+
+![review making](images/reviewenter.png)
+
+And this will show on success
+
+![review success](images/reviewmade.png)
+
+You can also play around with updating each of these models, and retrieving lists for them :)
+
+***You must not create anything machester united or arsenal related or there will be consequences***
