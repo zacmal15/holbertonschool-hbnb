@@ -192,4 +192,18 @@ We recommend using swagger ui through the localhost because thats what we used s
 Going to show you a few examples of how to use the API anyway
 
 Here is a screenshot of how the api should appear
+
 ![swagger ui](images/swaggerstart.png)
+
+You can play around here and create users, places, amenities and reviews
+
+Its thankfully quite self explanatory and you can find the associated curl commands which are taking place
+
+## Creating a user
+Here is an example of how to create a user
+
+![user creation](images/Screenshot 2026-06-21 at 22.45.36.png)
+
+Then hit the **execute** button and if you have entered 2 strings and a new email of the right format you will see
+
+![user success](images/DOM.png)
