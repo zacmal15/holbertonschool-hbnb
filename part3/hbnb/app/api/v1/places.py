@@ -2,7 +2,7 @@
 
 from flask_restx import Namespace, Resource, fields
 from app.services import facade
-from flask_jwt_extended import jwt_required, get_jwt_identity
+from flask_jwt_extended import jwt_required, get_jwt_identity, get_jwt
 
 
 api = Namespace('places', description='Place operations')
@@ -79,7 +79,15 @@ class PlaceList(Resource):
     @jwt_required()
     def post(self):
         """Register a new place"""
-        current_user = get_jwt_identity()
+        current_user = get_jwt()
+        # Set is_admin default to False if not exists
+        is_admin = current_user.get('is_admin', False)
+        user_id = current_user.get('id')
+
+        place = facade.get_place(place_id)
+        if not is_admin and place.owner_id != user_id:
+            return {'error': 'Unauthorized action'}, 403
+
         place_data = api.payload
         place_data["owner_id"] = current_user
         try:
@@ -121,7 +129,7 @@ class PlaceResource(Resource):
         place = facade.get_place(place_id)
         if not place:
             api.abort(404, "Place not found")
-        if place.owner.id != current_user:
+        if place.owner.id != current_user and not get_jwt()['is_admin']:
             return {'error': 'Unauthorised action'}, 403
         place = facade.update_place(place_id, api.payload)
         if not place:
