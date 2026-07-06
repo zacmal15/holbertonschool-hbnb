@@ -1,5 +1,60 @@
 # Business Logic Layer
 
+## Making an admin
+
+As of task 7, only admins can make new users so that puts us in a negative loop as we cant create an admin on swagger.
+
+Heres how to manually make one
+
+In terminal, go to part3/hbnb.
+'''bash
+flask shell
+'''
+
+'''python
+from app.extensions import db
+from app.models.user import User
+
+admin = User(
+    first_name="Admin",
+    last_name="Admin",
+    email="admin@hbnb.com",
+    is_admin=True
+)
+
+admin.hash_password("password")
+
+db.session.add(admin)
+db.session.commit()
+'''
+
+## Creating a New User
+
+First, log in as the admin to obtain a JWT access token:
+
+```bash
+curl -X POST http://127.0.0.1:5000/api/v1/auth/login \
+-H "Content-Type: application/json" \
+-d '{
+  "email": "admin@hbnb.com",
+  "password": "password"
+}'
+```
+
+Copy the access token, then create a new user:
+
+```bash
+curl -X POST http://127.0.0.1:5000/api/v1/users/ \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer <ACCESS_TOKEN>" \
+-d '{
+  "first_name": "Dominik",
+  "last_name": "Szoboszlai",
+  "email": "dom8@hbnb.com",
+  "password": "password1"
+}'
+```
+
 ## Overview
 
 The Business Logic Layer contains the core entities of the HBnB application and implements the business rules of the application. This layer is responsible for managing the four models: Users, Places, Reviews, and Amenities, while also maintaining the relationship between them.
