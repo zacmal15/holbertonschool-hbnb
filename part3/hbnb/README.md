@@ -7,11 +7,11 @@ As of task 7, only admins can make new users so that puts us in a negative loop 
 Heres how to manually make one
 
 In terminal, go to part3/hbnb.
-'''
+```bash
 flask shell
-'''
+```
 
-'''
+```python
 from app.extensions import db
 from app.models.user import User
 
@@ -26,7 +26,7 @@ admin.hash_password("password")
 
 db.session.add(admin)
 db.session.commit()
-'''
+```
 
 ## Creating a New User
 
