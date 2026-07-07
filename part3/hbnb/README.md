@@ -14,6 +14,7 @@ flask shell
 ```python
 from app.extensions import db
 from app.models.user import User
+db.create_all()
 
 admin = User(
     first_name="Admin",
