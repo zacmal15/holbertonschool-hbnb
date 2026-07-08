@@ -13,7 +13,7 @@ review_model = api.model('Review', {
     'place_id': fields.String(required=True, description='ID of the place')
 })
 
-review_post_response = api.model('Review Marshal 1', {
+review_post_response = api.model('Review post marshal', {
     'id': fields.String,
     'text': fields.String,
     'rating': fields.Integer,
@@ -21,13 +21,13 @@ review_post_response = api.model('Review Marshal 1', {
     'place_id': fields.String(attribute='place.id')
 })
 
-review_list_response = api.model('Review Marshal 1', {
+review_list_response = api.model('Review list marshal', {
     'id': fields.String,
     'text': fields.String,
     'rating': fields.Integer,
 })
 
-review_update_response = api.model('Review marshal 3', {
+review_update_response = api.model('Review update marshal', {
     'text': fields.String,
     'rating': fields.Integer
 })

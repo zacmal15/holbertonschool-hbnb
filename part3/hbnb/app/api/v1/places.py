@@ -48,13 +48,13 @@ place_model_response = api.model("Place ID", {
 })
 
 
-place_list_response = api.model('Place Marhsal 1', {
+place_list_response = api.model('Place list marshall', {
     'id': fields.String,
     'title': fields.String,
     'latitude': fields.Float,
     'longitude': fields.Float,
 })
-place_model_created_response = api.model('Place Marhsal 2', {
+place_model_created_response = api.model('Place create marshall', {
     'id': fields.String,
     'title': fields.String,
     'description': fields.String,
@@ -63,7 +63,7 @@ place_model_created_response = api.model('Place Marhsal 2', {
     'longitude': fields.Float,
     'owner_id': fields.String,
 })
-place_model_updated_response = api.model('Place Marshal 3', {
+place_model_updated_response = api.model('Place update marshal', {
     'title': fields.String,
     'description': fields.String,
     'price': fields.Float,

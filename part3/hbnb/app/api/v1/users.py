@@ -27,7 +27,7 @@ user_model = api.model('User', {
     )
 })
 
-user_list_response = api.model('User marshal', {
+user_list_response = api.model('User list marshal', {
     'id': fields.String,
     'first_name': fields.String,
     'last_name': fields.String,
