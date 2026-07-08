@@ -55,7 +55,20 @@ curl -X POST http://127.0.0.1:5000/api/v1/users/ \
   "password": "password1"
 }'
 ```
-
+## Making a place
+```bash
+curl -X POST http://127.0.0.1:5000/api/v1/places/ \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer <ACCESS_TOKEN>" \
+-d '{
+  "title": "Jon's gaff",
+  "description": "Chateau du Jon",
+  "price": 25000.00,
+  "latitude": 48.805,
+  "longitude": 2.122,
+  "amenities_id": []
+}'
+```
 ## Overview
 
 The Business Logic Layer contains the core entities of the HBnB application and implements the business rules of the application. This layer is responsible for managing the four models: Users, Places, Reviews, and Amenities, while also maintaining the relationship between them.
