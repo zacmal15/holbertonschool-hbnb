@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Review model."""
 
-from app.models.base_model import BaseModel
+from app.models.baseclass import BaseModel
 from app.models.user import User
 from app.models.place import Place
 from app.extensions import db

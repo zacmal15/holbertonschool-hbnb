@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Amenity model."""
 
-from app.models.base_model import BaseModel
+from app.models.baseclass import BaseModel
 from app.extensions import db
 
 class Amenity(BaseModel):

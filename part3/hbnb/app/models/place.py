@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Place model."""
 
-from app.models.base_model import BaseModel
+from app.models.baseclass import BaseModel
 from app.models.user import User
 from app.extensions import db
 
