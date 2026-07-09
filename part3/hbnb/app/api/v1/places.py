@@ -79,14 +79,7 @@ class PlaceList(Resource):
     @jwt_required()
     def post(self):
         """Register a new place"""
-        current_user = get_jwt()
-        # Set is_admin default to False if not exists
-        is_admin = current_user.get('is_admin', False)
-        user_id = current_user.get('id')
-
-        place = facade.get_place(place_id)
-        if not is_admin and place.owner_id != user_id:
-            return {'error': 'Unauthorized action'}, 403
+        current_user = get_jwt_identity()
 
         place_data = api.payload
         place_data["owner_id"] = current_user
