@@ -72,7 +72,18 @@ class HBnBFacade:
 
 # Placeholder method for fetching a place by ID
     def create_place(self, place_data):
+
+        # Amenity ids were a pain in the arse so they go POP
+        amenity_ids = place_data.pop("amenities_id", [])
+
         place = Place(**place_data)
+        # lets put amenities back, BRUTE FORCE BABYYYY
+        for ids in amenity_ids:
+            amenity = self.amenity_repo.get(ids)
+            if not amenity:
+                return None
+            place.amenities.append(amenity)
+
         self.place_repo.add(place)
         return place
 
