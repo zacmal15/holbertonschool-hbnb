@@ -3,6 +3,7 @@
 > After the club go to Truffoni's for sloppy steaks. They'd say; 'no sloppy steaks' but they can't stop you from ordering a steak and a glass of water, before you knew it we were dumping that water on those steaks!  
 > The waiters were coming to try and snatch em up, we had to eat as fast as we could! OHHH I MISS THOSE NIGHTS,  
 > I *WAS* A PIECE OF SH\*T THOUGH."
+> - *Tim Robinson*
 ---
 ## Implimented authentication and databases
 ---
