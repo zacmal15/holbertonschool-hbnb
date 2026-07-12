@@ -71,7 +71,7 @@ http://127.0.0.1:5000/api/v1/
 ---
 
 ```
-python -m flask shell
+python3 -m flask shell
 ```
 
 This allows you to enter the flask shell and interact with it directly, or using curl to push though curl commands with an admin token.
