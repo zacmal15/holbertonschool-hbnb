@@ -58,7 +58,6 @@ cd holbertonschool-hbnb/part3/hbnb
 ```
 pip install -r requirements.txt
 ```
-# Lachy please step in my king
 
 ## Run the application
 ```
@@ -66,9 +65,20 @@ python3 run.py
 ```
 This starts the api server and it can be accessed on your browser through:\
 http://127.0.0.1:5000/api/v1/
-
 ---
 
+```
+python -m flask shell
+```
+
+This allows you to enter the flask shell and interact with it directly, or using curl to push though curl commands with an admin token.
+
+in sqlpop we have sqlite_db.py, by running this you will create an example database, insert 3 amenities and create an admin named Admin HbnB. Then do CRUD operations, this demonstrates how the functionaily of the database will work without affecting the actual database.
+
+to run this database creation/intialzation/crud:
+```
+python3 sqlite_db.py
+```
 ## User
 
 `User` represents a user of the HBnB application.
@@ -170,7 +180,7 @@ The Business Logic Layer implements the following relationships:
 
 ## Create the database and admin in flask
 
-Firstly open `flask shell`, next enter this code:
+Firstly open `flask shell` methods such as `python -m flask shell` work, next enter this code:
 
 ```python
 from app import db
