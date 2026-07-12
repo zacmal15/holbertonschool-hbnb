@@ -73,11 +73,11 @@ python -m flask shell
 
 This allows you to enter the flask shell and interact with it directly, or using curl to push though curl commands with an admin token.
 
-in sqlpop we have sqlite_db.py, by running this you will create an example database, insert 3 amenities and create an admin named Admin HbnB. Then do CRUD operations, this demonstrates how the functionaily of the database will work without affecting the actual database.
+in sqlpop we have dbInit.py, by running this you will create an example database, insert 3 amenities and create an admin named Admin HbnB. Then do CRUD operations, this demonstrates how the functionaily of the database will work without affecting the actual database.
 
 to run this database creation/intialzation/crud:
 ```
-python3 sqlite_db.py
+python3 dbInit.py
 ```
 ## User
 
