@@ -1,7 +1,72 @@
 # Welcome to our HBnB readme
+> "Glass House. White Ferrari. Live for New Year's Eve. Sloppy steaks at Truffoni's. Big rare cut of meat with water dumped all over it, water splashing around the table, makes the night SO MUCH more fun. After the club go to Truffoni's for sloppy steaks. They'd say; 'no sloppy steaks' but they can't stop you from ordering a steak and a glass of water, before you knew it we were dumping that water on those steaks! The waiters were coming to try and snatch em up, we had to eat as fast as we could! OHHH I MISS THOSE NIGHTS, I *WAS* A PIECE OF SHIT THOUGH."
+---
+## Implimented authentication and databases
+---
+
+In this section we have implimented several fun features:
+
+- JWT authentication (so we know wo you are [we are DYING to know] )
+- User registration and logins with tokens
+- Protected endpoints using JWT (we are in control)
+- Admin permissions for:
+  - Creating new users
+  - Modifying users details like email and password
+  - Adding new amenities
+  - Modifying details of amenities
+- User ownership valdiation with JWT to use:
+  - Create and own a new place
+  - Update your places details
+  - Create a review
+  - Modify reviews you have made
+  - Delete your reviews
+- We still have some public endpoints, like retrieving data with GET
+- Used SQLAlchemy to make a database
 
 ---
-Implimented authentication and databases
+
+## Entity Relation (ER) Diagrams
+
+This diagram maps the relations between the main entitiys
+![ER Diagram](images/erdiagram.png)
+
+This is just an overview of how our database is linked between each entity. The `||` notation shows a one-to-one elationship and `o{` shows a one to many relationship.
+
+This can also be branched out to show relations for potential new elements that could be added to the application in the future
+![ER Diagram with reservations](images/erdiagram_res.png)
+
+This shows how reservations would be able to booked and how they would be related to the other entities in the database, where one user can make many reservations, and one place is linked to each reservation.
+
+---
+# Setup and running HBnB
+
+## Clone the repository
+```
+git clone https://github.com/SamAT01ni/holbertonschool-hbnb.git
+```
+## Navigate to hbnb
+```
+cd holbertonschool-hbnb/part3/hbnb
+```
+## Install the required parts
+```
+pip install -r requirements.txt
+```
+## Create the database
+
+Open flask shell using
+```bash
+flask shell
+```
+# Lachy please step in my king
+
+## Run the application
+```
+python3 run.py
+```
+This starts the api server and it can be accessed on your browser through:\
+http://127.0.0.1:5000/api/v1/
+
 ---
 
 ## User
@@ -101,176 +166,6 @@ The Business Logic Layer implements the following relationships:
 
 ---
 
-## Usage Examples
-
-### Create a user
-
-user = User(
-    first_name="Sam",
-    last_name="Lachlan",
-    email="anthony@example.com
-)
-
-### Create a place
-
-place = Place(
-    title="zacshouse",
-    description="mansion",
-    price=3,
-    latitude=11.111,
-    longitude= 33.333,
-    owner=user
-)
-
-### Create a review
-
-review = Review(
-    text="wasnt actually that big",
-    rating=1,
-    place=place,
-    user=user
-)
-
-### Create an amenity
-
-wifi = Amenity("Wifi")
-place.add.amenity(wifi)
-
-### Update an entity
-
-user.update({
-    "first_name": "Samuel"
-})
-
----
-
-# Setup and running HBnB
-
-## Clone the repository
-```
-git clone https://github.com/SamAT01ni/holbertonschool-hbnb.git
-```
-## Navigate to hbnb
-```
-cd holbertonschool-hbnb/part2/hbnb
-```
-## Install the required parts
-```
-pip install -r requirements.txt
-```
-## Run the application
-```
-python3 run.py
-```
-This starts the api server and it can be accessed on your browser through:\
-http://127.0.0.1:5000/api/v1/
-
-You can then try to create users and places yourself using Swagger UI
-
----
-
 # Using the API
-
-We recommend using swagger ui through the localhost because thats what we used so i cannot really guide you elsewhere\
-Going to show you a few examples of how to use the API anyway
-
-Here is a screenshot of how the api should appear
-
-![swagger ui](images/swaggerstart.png)
-
-You can play around here and create users, places, amenities and reviews
-
-Its thankfully quite self explanatory and you can find the associated curl commands which are taking place
-
-## Creating a user
-Here is an example of how to create a user
-
-![user creation](images/dom1.png)
-
-Then hit the **execute** button and if you have entered 2 strings and a new email of the right format you will see
-
-![user success](images/DOM.png)
-
-Curl commmand:
-```
-curl -X 'POST' \
-  'http://127.0.0.1:5000/api/v1/users/' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
-  -d '{
-  "first_name": "Dominik",
-  "last_name": "Szoboszlai",
-  "email": "number8@liverpool.com"
-}'
-```
-## Amenity creation
-
-This works much the same, enter a string and boom, an amenity has been made!!!
-
-## Place creation
-
-Going to the places header and going into POST, you can create a Hbnb.
-
-Only thing to note here is that you need to enter a valid user_id so the place actually belongs to someone.
-
-Amenities are optional but if entered they must also match with an existing amenity id. Here is an example of the creation of Anfield
-![place making](images/placeenter.png)
-
-You have to enter valid data, valid user id and amenity ids and a non zero price, as well as having conditions around the latitude and longitude.
-
-Curl Command:
-```
-curl -X 'POST' \
-  'http://127.0.0.1:5000/api/v1/places/' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
-  -d '{
-  "title": "Anfield",
-  "description": "Home of Liverpool football club",
-  "price": 1000000,
-  "latitude": 53.4308,
-  "longitude": 2.9608,
-  "owner_id": "77554ac6-9aa1-4d21-94f0-364ebc196207",
-  "amenities_id": [
-    "631b5c50-5f89-4375-a687-ab507b9d5871",
-    "99b40da4-25a0-4372-81d4-487900cf2b2b"
-  ]
-}'
-```
-
-After hitting execute you should see this if successful
-
-![place success](images/placemade.png)
-
-Bosh
-
-## Review making
-
-Each review has to be connected to a user and a place
-
-If the owner of the place tries to post a review it will not be made. no funny business here we are very serious.
-
-But this is an example of how to do it
-
-![review making](images/reviewenter.png)
-
-Curl Command:
-```
-curl -X 'POST' \
-  'http://127.0.0.1:5000/api/v1/reviews/' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
-  -d '{
-  "text": "This is the best place on earth up the reds im upset salah is gone. Bring back Nunez!!!",
-  "rating": 5,
-  "user_id": "a7a04858-0f05-4c89-b360-6befe1c9d7b5",
-  "place_id": "437f8620-daed-41dc-aa70-75531828fadc"
-}'
-```
-And this will show on success
-
-![review success](images/reviewmade.png)
-
-You can also play around with updating each of these models, and retrieving lists for them :)
 
 ***You must not create anything machester united or arsenal related or there will be consequences***
