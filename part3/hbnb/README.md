@@ -1,7 +1,7 @@
 # Welcome to our HBnB readme
-> "Glass House. White Ferrari. Live for New Year's Eve. Sloppy steaks at Truffoni's. Big rare cut of meat with water dumped all over it, water splashing around the table, makes the night SO MUCH more fun.
-> After the club go to Truffoni's for sloppy steaks. They'd say; 'no sloppy steaks' but they can't stop you from ordering a steak and a glass of water, before you knew it we were dumping that water on those steaks!
-> The waiters were coming to try and snatch em up, we had to eat as fast as we could! OHHH I MISS THOSE NIGHTS,
+> "Glass House. White Ferrari. Live for New Year's Eve. Sloppy steaks at Truffoni's. Big rare cut of meat with water dumped all over it, water splashing around the table, makes the night SO MUCH more fun.  
+> After the club go to Truffoni's for sloppy steaks. They'd say; 'no sloppy steaks' but they can't stop you from ordering a steak and a glass of water, before you knew it we were dumping that water on those steaks!  
+> The waiters were coming to try and snatch em up, we had to eat as fast as we could! OHHH I MISS THOSE NIGHTS,  
 > I *WAS* A PIECE OF SH\*T THOUGH."
 ---
 ## Implimented authentication and databases
