@@ -31,16 +31,19 @@ In this section we have implimented several fun features:
 ## Entity Relation (ER) Diagrams
 
 This diagram maps the relations between the main entitiys
+
 ![ER Diagram](images/erdiagram.png)
 
 This is just an overview of how our database is linked between each entity. The `||` notation shows a one-to-one elationship and `o{` shows a one to many relationship.
 
 This can also be branched out to show relations for potential new elements that could be added to the application in the future
+
 ![ER Diagram with reservations](images/erdiagram_res.png)
 
 This shows how reservations would be able to booked and how they would be related to the other entities in the database, where one user can make many reservations, and one place is linked to each reservation.
 
 ---
+
 # Setup and running HBnB
 
 ## Clone the repository
@@ -170,5 +173,11 @@ The Business Logic Layer implements the following relationships:
 ---
 
 # Using the API
+
+## Create an admin in flask
+
+Firstly open `flask shell`, next enter this code:
+
+***AAAAAAAHHHHHHH***
 
 ***You must not create anything machester united or arsenal related or there will be consequences***
