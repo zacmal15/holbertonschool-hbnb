@@ -1,0 +1,230 @@
+/* Reset default browser spacing and use consistent sizing */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Page colours and layout */
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    width: 120px;
+    height: auto;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Login button */
+.login-button {
+    display: inline-block;
+    padding: 0.6rem 1rem;
+    border: 1px solid #fff;
+    border-radius: 6px;
+}
+
+.login-button:hover {
+    background-color: #fff;
+    color: #333;
+    text-decoration: none;
+}
+
+/* Main content */
+main {
+    flex: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Page headings */
+h1 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 1rem;
+}
+
+/* Filter section */
+#filter {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+#price-filter {
+    margin-left: 0.5rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Places layout */
+#places-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+/* Required card styles */
+.place-card,
+.review-card {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+/* Place cards */
+.place-card {
+    text-align: center;
+}
+
+.place-card p {
+    margin-bottom: 1rem;
+}
+
+/* Details button */
+.details-button {
+    display: inline-block;
+    padding: 0.7rem 1rem;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+.details-button:hover {
+    background-color: #555;
+}
+
+/* Place details page */
+.place-details {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+.place-info p {
+    margin-bottom: 0.8rem;
+}
+
+/* Reviews section */
+.reviews {
+    margin-top: 2rem;
+}
+
+.review-card p {
+    margin-bottom: 0.6rem;
+}
+
+/* Forms */
+.form,
+.add-review {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.form input,
+.form textarea,
+.form select {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+.form button {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+}
+
+.form button:hover {
+    background-color: #555;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    margin-top: auto;
+}
+
+/* Smaller screens */
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    main {
+        padding: 1rem;
+    }
+
+    #places-list {
+        grid-template-columns: 1fr;
+    }
+
+    .place-card,
+    .review-card {
+        margin: 10px 0;
+    }
+}
