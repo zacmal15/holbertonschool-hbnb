@@ -3,63 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Add Review</title>
+
+    <link rel="icon" type="image/png" href="images/icon.png">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-
     <header>
         <a href="index.html">
-            <img src="images/logo.png"
-                 alt="HBnB Logo"
-                 class="logo">
+            <img
+                src="images/logo.png"
+                alt="HBnB Logo"
+                class="logo"
+            >
         </a>
 
         <nav>
             <a href="index.html">Places</a>
-            <a href="login.html" class="login-button">Login</a>
+
+            <a
+                href="login.html"
+                id="login-link"
+                class="login-button"
+            >
+                Login
+            </a>
         </nav>
     </header>
 
     <main>
-
-        <h1 id="place-name">Place Name</h1>
+        <h1>Add a Review</h1>
 
         <form id="review-form" class="form add-review">
-
-            <h2>Add a Review</h2>
-
             <label for="review">Your Review:</label>
 
             <textarea
                 id="review"
                 name="review"
-                required>
-            </textarea>
+                required
+            ></textarea>
 
             <label for="rating">Rating:</label>
 
             <select
                 id="rating"
                 name="rating"
-                required>
-
-                <option value="">Select Rating</option>
+                required
+            >
+                <option value="">Select a rating</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
                 <option value="5">5</option>
-
             </select>
 
             <button type="submit">
                 Submit Review
             </button>
-
         </form>
-
     </main>
 
     <footer>
@@ -67,6 +71,5 @@
     </footer>
 
     <script src="scripts.js"></script>
-
 </body>
 </html>

@@ -3,10 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const placesList = document.getElementById('places-list');
     const priceFilter = document.getElementById('price-filter');
     const placeDetails = document.getElementById('place-details');
+    const reviewForm = document.getElementById('review-form');
 
     if (loginForm) {
         loginForm.addEventListener('submit', async (event) => {
-
             event.preventDefault();
 
             const email = document.getElementById('email').value;
@@ -26,6 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (placeDetails) {
         initialisePlaceDetailsPage();
+    }
+
+    if (reviewForm) {
+        initialiseAddReviewPage(reviewForm);
     }
 });
 
@@ -389,4 +393,144 @@ function displayPlaceError(message) {
     if (placeDetails) {
         placeDetails.innerHTML = `<p>${message}</p>`;
     }
+}
+
+
+function initialiseAddReviewPage(reviewForm) {
+    const token = getCookie('token');
+    const placeId = getPlaceIdFromURL();
+    const loginLink = document.getElementById('login-link');
+
+    if (!token) {
+        window.location.href = 'index.html';
+        return;
+    }
+
+    if (!placeId) {
+        displayReviewMessage(
+            'No place was selected.',
+            'error'
+        );
+        reviewForm.style.display = 'none';
+        return;
+    }
+
+    if (loginLink) {
+        loginLink.style.display = 'none';
+    }
+
+    reviewForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const reviewText =
+            document.getElementById('review').value.trim();
+
+        const rating =
+            Number(document.getElementById('rating').value);
+
+        if (!reviewText) {
+            displayReviewMessage(
+                'Please enter a review.',
+                'error'
+            );
+            return;
+        }
+
+        if (rating < 1 || rating > 5) {
+            displayReviewMessage(
+                'Please select a rating from 1 to 5.',
+                'error'
+            );
+            return;
+        }
+
+        await submitReview(
+            token,
+            placeId,
+            reviewText,
+            rating,
+            reviewForm
+        );
+    });
+}
+
+
+async function submitReview(
+    token,
+    placeId,
+    reviewText,
+    rating,
+    reviewForm
+) {
+    try {
+        const response = await fetch(
+            'http://127.0.0.1:5000/api/v1/reviews/',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    text: reviewText,
+                    rating: rating,
+                    place_id: placeId
+                })
+            }
+        );
+
+        let data = {};
+
+        try {
+            data = await response.json();
+        } catch (error) {
+            data = {};
+        }
+
+        if (response.ok) {
+            displayReviewMessage(
+                'Review submitted successfully!',
+                'success'
+            );
+
+            reviewForm.reset();
+        } else {
+            displayReviewMessage(
+                data.error ||
+                data.message ||
+                data.msg ||
+                'Failed to submit review.',
+                'error'
+            );
+        }
+    } catch (error) {
+        console.error('Review submission failed:', error);
+
+        displayReviewMessage(
+            'Unable to connect to the server.',
+            'error'
+        );
+    }
+}
+
+
+function displayReviewMessage(message, type) {
+    let messageElement =
+        document.getElementById('review-message');
+
+    if (!messageElement) {
+        messageElement = document.createElement('p');
+        messageElement.id = 'review-message';
+
+        const reviewForm =
+            document.getElementById('review-form');
+
+        if (reviewForm) {
+            reviewForm.appendChild(messageElement);
+        }
+    }
+
+    messageElement.textContent = message;
+    messageElement.className =
+        type === 'success' ? 'success-message' : 'error-message';
 }
