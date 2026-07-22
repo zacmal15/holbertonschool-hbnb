@@ -4,11 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const priceFilter = document.getElementById('price-filter');
     const placeDetails = document.getElementById('place-details');
 
-    console.log('Login form:', loginForm);
-
     if (loginForm) {
         loginForm.addEventListener('submit', async (event) => {
-            console.log('Login form submitted');
 
             event.preventDefault();
 
