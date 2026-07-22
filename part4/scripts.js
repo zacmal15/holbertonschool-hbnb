@@ -1,8 +1,4 @@
-console.log('scripts.js loaded');
-
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM loaded');
-
     const loginForm = document.getElementById('login-form');
     const placesList = document.getElementById('places-list');
     const priceFilter = document.getElementById('price-filter');
@@ -78,14 +74,10 @@ async function loginUser(email, password) {
 
         const data = await response.json();
 
-        console.log('Login response:', data);
-
         if (response.ok) {
             document.cookie =
                 `token=${encodeURIComponent(data.access_token)}; ` +
                 'path=/; SameSite=Lax; Max-Age=3600';
-
-            console.log('Cookie after login:', document.cookie);
 
             window.location.href = 'index.html';
         } else {
