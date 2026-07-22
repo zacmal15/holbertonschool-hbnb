@@ -41,6 +41,7 @@ place_model_response = api.model("Place ID", {
     'id': fields.String,
     'title': fields.String,
     'description': fields.String,
+    'price': fields.Float,
     'latitude': fields.Float,
     'longitude': fields.Float,
     'owner': fields.Nested(user_model),
@@ -51,6 +52,8 @@ place_model_response = api.model("Place ID", {
 place_list_response = api.model('Place list marshall', {
     'id': fields.String,
     'title': fields.String,
+    'description': fields.String,
+    'price': fields.Float,
     'latitude': fields.Float,
     'longitude': fields.Float,
 })
